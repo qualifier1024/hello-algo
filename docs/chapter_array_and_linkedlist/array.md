@@ -24,10 +24,20 @@ comments: true
     int[] nums = { 1, 3, 2, 5, 4 };
     ```
 
+=== "JavaScript"
+
+    ```javascript title="array.javascript"
+    /* 初始化数组 */
+    var arr = new Array(5).fill(0)
+    var nums = [1, 3, 2, 5, 4]
+    ```
+
 === "C++"
 
     ```cpp title="array.cpp"
-    
+    /* 初始化数组 */
+    int* arr = new int[5];
+    int* nums = new int[5] { 1, 3, 2, 5, 4 };
     ```
 
 === "Python"
@@ -67,10 +77,30 @@ elementAddr = firtstElementAddr + elementLength * elementIndex
     }
     ```
 
+=== "JavaScript"
+
+    ```javascript title="array.javascript"
+    /* 随机返回一个数组元素 */
+    function randomAccess(nums){
+        // 在区间 [0, nums.length) 中随机抽取一个数字
+        const random_index  = Math.floor(Math.random() * nums.length)
+        // 获取并返回随机元素
+        random_num = nums[random_index]
+        return random_num
+    }
+    ```
+
 === "C++"
 
     ```cpp title="array.cpp"
-    
+    /* 随机返回一个数组元素 */
+    int randomAccess(int* nums, int size) {
+        // 在区间 [0, size) 中随机抽取一个数字
+        int randomIndex = rand() % size;
+        // 获取并返回随机元素
+        int randomNum = nums[randomIndex];
+        return randomNum;
+    }
     ```
 
 === "Python"
@@ -105,16 +135,44 @@ elementAddr = firtstElementAddr + elementLength * elementIndex
     }
     ```
 
+=== "JavaScript"
+
+    ```javascript title="array.javascript"
+    /* 扩展数组长度 */
+    function extend(nums, enlarge){
+        // 初始化一个扩展长度后的数组
+        let res = new Array(nums.length + enlarge).fill(0)
+        // 将原数组中的所有元素复制到新数组
+        for(let i=0; i<nums.length;i++){
+                res[i] = nums[i]
+        }
+        // 返回扩展后的新数组
+        return res
+    }
+    ```
+
 === "C++"
 
     ```cpp title="array.cpp"
-    
+    /* 扩展数组长度 */
+    int* extend(int* nums, int size, int enlarge) {
+        // 初始化一个扩展长度后的数组
+        int* res = new int[size + enlarge];
+        // 将原数组中的所有元素复制到新数组
+        for (int i = 0; i < size; i++) {
+            res[i] = nums[i];
+        }
+        // 返回扩展后的新数组
+        return res;
+    }
     ```
 
 === "Python"
 
     ```python title="array.py"
     """ 扩展数组长度 """
+    # 请注意，Python 的 list 是动态数组，可以直接扩展
+    # 为了方便学习，本函数将 list 看作是长度不可变的数组
     def extend(nums, enlarge):
         # 初始化一个扩展长度后的数组
         res = [0] * (len(nums) + enlarge)
@@ -157,10 +215,48 @@ elementAddr = firtstElementAddr + elementLength * elementIndex
     }
     ```
 
+=== "JavaScript"
+
+    ```javascript title="array.javascript"
+    /* 在数组的索引 index 处插入元素 num */
+    function insert(nums, num, index){
+        // 把索引 index 以及之后的所有元素向后移动一位
+        for (let i = nums.length - 1; i >= index; i--) {
+            nums[i] = nums[i - 1];
+        }
+        // 将 num 赋给 index 处元素
+        nums[index] = num;
+    }
+
+    /* 删除索引 index 处元素 */
+    function remove(nums, index){
+        // 把索引 index 之后的所有元素向前移动一位
+        for (let i = index; i < nums.length - 1; i++) {
+            nums[i] = nums[i + 1]
+        }
+    }
+    ```
+
 === "C++"
 
     ```cpp title="array.cpp"
-    
+    /* 在数组的索引 index 处插入元素 num */
+    void insert(int* nums, int size, int num, int index) {
+        // 把索引 index 以及之后的所有元素向后移动一位
+        for (int i = size - 1; i >= index; i--) {
+            nums[i] = nums[i - 1];
+        }
+        // 将 num 赋给 index 处元素
+        nums[index] = num;
+    }
+
+    /* 删除索引 index 处元素 */
+    void remove(int* nums, int size, int index) {
+        // 把索引 index 之后的所有元素向前移动一位
+        for (int i = index; i < size - 1; i++) {
+            nums[i] = nums[i + 1];
+        }
+    }
     ```
 
 === "Python"
@@ -202,10 +298,34 @@ elementAddr = firtstElementAddr + elementLength * elementIndex
     }
     ```
 
+=== "JavaScript"
+
+    ```javascript title="array.javascript"
+    /* 遍历数组 */
+    function traverse(nums){
+        let count = 0
+        // 通过索引遍历数组
+        for (let i = 0; i < nums.length; i++) {
+            count++;
+        }
+        // 直接遍历数组
+        for(let num of nums){
+            count += 1
+        }
+    }
+    ```
+
 === "C++"
 
     ```cpp title="array.cpp"
-    
+    /* 遍历数组 */
+    void traverse(int* nums, int size) {
+        int count = 0;
+        // 通过索引遍历数组
+        for (int i = 0; i < size; i++) {
+            count++;
+        }
+    }  
     ```
 
 === "Python"
@@ -237,10 +357,30 @@ elementAddr = firtstElementAddr + elementLength * elementIndex
     }
     ```
 
+=== "JavaScript"
+
+    ```javascript title="array.javascript"
+    /* 在数组中查找指定元素 */
+    function find(nums, target){
+        for (let i = 0; i < nums.length; i++) {
+            if (nums[i] == target)
+                return i;
+        }
+        return -1
+    }
+    ```
+
 === "C++"
 
     ```cpp title="array.cpp"
-    
+    /* 在数组中查找指定元素 */
+    int find(int* nums, int size, int target) {
+        for (int i = 0; i < size; i++) {
+            if (nums[i] == target)
+                return i;
+        }
+        return -1;
+    }
     ```
 
 === "Python"
